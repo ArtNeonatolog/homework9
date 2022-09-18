@@ -3,14 +3,15 @@ public class Main {
     public static void main(String[] args) {
         task1a(); //Задание 1 - 1 вариант решения
         task1b(); //Задание 1 - 2 вариант решения
-        task2();
+        task2a(); //Задание 2 - 1 вариант решения
+        task2b(); //Задание 2 - 2 вариант решения
         task3();
         task4();
     }
     private static void task4() {
         System.out.println("Задание 4");
         char [] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        for (int i = 10; i >= 0; i --) {
+        for (int i = reverseFullName.length - 1; i >= 0; i --) {
             System.out.print(reverseFullName[i]);
         }
     }
@@ -20,21 +21,39 @@ public class Main {
         int[] spending = new int[30];
         for (int index = 0; index < spending.length; index++) {
             spending[index] = index * 3144 + 100000;
-        } //рандомные числа
+        } //случайные числа
         int sum = Arrays.stream(spending).sum();
-        double averageSpending = (double) sum / 30;
+        double averageSpending = (double) sum / spending.length;
         System.out.println("Средняя сумма трат за месяц составила " + averageSpending + " рублей.");// числа разные поэтому результат решения отличается
         System.out.println();
     }
-        private static void task2 () {
+    private static void task2b() {
             System.out.println();
-            System.out.println("Задание 2");
+            System.out.println("Задание 2 - 2 вариант");
+            int[] spending = new int[30];
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+            for (int index = 0; index < spending.length; index++) {
+                spending[index] = index * 3144 + 100000;//рандомные числа идентичные 1 варианту 1 задания
+                if (spending[index] < min) {
+                    min = spending[index];
+                }
+                if (spending[index] > max) {
+                    max = spending[index];
+                }
+            }
+            System.out.println("Минимальная сумма трат за день составила " + min + " рублей");
+            System.out.println("Максимальная сумма трат за день составила " + max + " рублей");
+        }
+        private static void task2a () {
+            System.out.println();
+            System.out.println("Задание 2 - 1 вариант");
             int[] spending = new int[30];
             for (int index = 0; index < spending.length; index ++) {
-                spending[index] = index * 3144 + 100000;}//рандомные числа идентичные 1 варианту 1 задания
+                spending[index] = index * 3144 + 100000;}//случайные числа идентичные 1 варианту 1 задания
             Arrays.sort(spending);
                 int min = spending[0];
-                int max = spending[29];
+                int max = spending[spending.length - 1];
                     System.out.println("Минимальная сумма трат за день составила " + min + " рублей");
                     System.out.println("Максимальная сумма трат за день составила " + max + " рублей");
             }
@@ -54,7 +73,7 @@ public class Main {
             System.out.println("Задание 1 (1 вариант)");
             int[] spending = new int[30];
             for (int index = 0; index < spending.length; index++) {
-                spending[index] = index * 3144 + 100000; //рандомные числа
+                spending[index] = index * 3144 + 100000; //случайные числа
                 System.out.print(spending[index] + " ");
             }
             int sum = Arrays.stream(spending).sum();
